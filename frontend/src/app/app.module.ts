@@ -14,7 +14,7 @@ import { MaterialModule } from './material/material.module'
   declarations: [
     AppComponent,
     // BooksListComponent,
-    BookDetailComponent
+    BookDetailComponent,
   ],
   imports: [
     BrowserModule,

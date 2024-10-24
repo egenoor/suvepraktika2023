@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common'
 import { Component, OnInit, ViewChild } from '@angular/core'
 import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator'
+import { MatSort, MatSortModule, Sort } from '@angular/material/sort'
 import { MatTableDataSource, MatTableModule } from '@angular/material/table'
 import { Observable } from 'rxjs'
 import { Book } from '../../models/book'
@@ -12,7 +13,7 @@ import { BookService } from '../../services/book.service'
   templateUrl: './books-table.component.html',
   styleUrls: ['./books-table.component.scss'],
   standalone: true,
-  imports: [MatTableModule, CommonModule, MatPaginatorModule]
+  imports: [MatTableModule, CommonModule, MatPaginatorModule, MatSortModule]
 })
 export class BooksTableComponent implements OnInit {
   books$!: Observable<Page<Book>>;
@@ -20,8 +21,10 @@ export class BooksTableComponent implements OnInit {
   displayedColumns: string[] = ['title', 'author', 'genre', 'year'];
   length: number;
   pageIndex: number;
+  pageSize: number;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
+  @ViewChild(MatSort) sort: MatSort;
   
   constructor(
     private bookService: BookService,
@@ -30,7 +33,21 @@ export class BooksTableComponent implements OnInit {
 
   handlePageChange(e: PageEvent) {
     this.bookService.getBooks({pageIndex: e.pageIndex, pageSize: e.pageSize}).subscribe((data) => {
-      this.pageIndex = data.number
+      this.pageIndex = e.pageIndex;
+      this.pageSize = e.pageSize;
+      this.dataSource = new MatTableDataSource(data.content);
+    })
+  }
+
+  sortBooks(sortEvent: Sort) {
+    this.bookService.getBooks({
+      pageIndex: this.pageIndex, 
+      pageSize: this.pageSize, 
+      sort: sortEvent.active, 
+      direction: sortEvent.direction
+    }).subscribe((data) => {
+      this.pageIndex = this.pageIndex;
+      this.pageSize = this.pageSize;
       this.dataSource = new MatTableDataSource(data.content);
     })
   }
