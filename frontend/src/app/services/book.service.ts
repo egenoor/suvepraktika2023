@@ -1,10 +1,10 @@
-import { Injectable } from '@angular/core';
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { Page, PageRequest } from '../models/page';
-import { Book } from '../models/book';
-import { Observable } from 'rxjs';
-import { environment } from 'src/environments/environment';
-import { RestUtil } from './rest-util';
+import { HttpClient, HttpParams } from '@angular/common/http'
+import { Injectable } from '@angular/core'
+import { Observable } from 'rxjs'
+import { environment } from 'src/environments/environment'
+import { Book } from '../models/book'
+import { Page, PageRequest } from '../models/page'
+import { RestUtil } from './rest-util'
 
 @Injectable({
   providedIn: 'root'
