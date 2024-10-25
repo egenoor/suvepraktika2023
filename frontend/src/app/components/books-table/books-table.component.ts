@@ -41,9 +41,9 @@ export class BooksTableComponent implements OnInit {
 
   sortBooks(sortEvent: Sort) {
     this.bookService.getBooks({
-      pageIndex: this.pageIndex, 
-      pageSize: this.pageSize, 
-      sort: sortEvent.active, 
+      pageIndex: this.pageIndex,
+      pageSize: this.pageSize,
+      sort: sortEvent.active,
       direction: sortEvent.direction
     }).subscribe((data) => {
       this.pageIndex = this.pageIndex;
