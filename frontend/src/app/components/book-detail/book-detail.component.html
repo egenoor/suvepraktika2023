@@ -1,1 +1,15 @@
-<pre>{{book$ | async | json}}</pre>
+<div class="book-detail-container">
+  <h1>{{ bookDetails.title }}</h1>
+  <div><span class="book-label">Author: </span>{{ bookDetails.author }}</div>
+  <div><span class="book-label">Released: </span>{{ bookDetails.year }}</div>
+  <div><span class="book-label">Genre: </span>{{ bookDetails.genre }}</div>
+  <button
+    mat-raised-button
+    color="Primary"
+    [disabled]="bookDetails.status === 'BORROWED'"
+    color="primary"
+    (click)="addToCheckout()"
+  >
+    Borrow
+  </button>
+</div>

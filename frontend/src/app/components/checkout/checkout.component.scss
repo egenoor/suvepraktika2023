@@ -1,0 +1,9 @@
+.checkout-container {
+  display: flex;
+  justify-content: space-evenly;
+
+  table {
+    min-width: 700px;
+    box-shadow: none;
+  }
+}

@@ -1,8 +1,7 @@
-import { CommonModule } from '@angular/common'
 import { Component, OnInit, ViewChild } from '@angular/core'
-import { MatPaginator, MatPaginatorModule, PageEvent } from '@angular/material/paginator'
-import { MatSort, MatSortModule, Sort } from '@angular/material/sort'
-import { MatTableDataSource, MatTableModule } from '@angular/material/table'
+import { MatPaginator, PageEvent } from '@angular/material/paginator'
+import { MatSort, Sort } from '@angular/material/sort'
+import { MatTableDataSource } from '@angular/material/table'
 import { Observable } from 'rxjs'
 import { Book } from '../../models/book'
 import { Page } from '../../models/page'
@@ -12,8 +11,6 @@ import { BookService } from '../../services/book.service'
   selector: 'app-books-table',
   templateUrl: './books-table.component.html',
   styleUrls: ['./books-table.component.scss'],
-  standalone: true,
-  imports: [MatTableModule, CommonModule, MatPaginatorModule, MatSortModule]
 })
 export class BooksTableComponent implements OnInit {
   books$!: Observable<Page<Book>>;
@@ -32,7 +29,12 @@ export class BooksTableComponent implements OnInit {
   }
 
   handlePageChange(e: PageEvent) {
-    this.bookService.getBooks({pageIndex: e.pageIndex, pageSize: e.pageSize}).subscribe((data) => {
+    this.bookService
+    .getBooks({
+      pageIndex: e.pageIndex,
+      pageSize: e.pageSize
+    })
+    .subscribe((data) => {
       this.pageIndex = e.pageIndex;
       this.pageSize = e.pageSize;
       this.dataSource = new MatTableDataSource(data.content);
@@ -40,15 +42,17 @@ export class BooksTableComponent implements OnInit {
   }
 
   sortBooks(sortEvent: Sort) {
-    this.bookService.getBooks({
+    this.bookService
+    .getBooks({
       pageIndex: this.pageIndex,
       pageSize: this.pageSize,
       sort: sortEvent.active,
       direction: sortEvent.direction
-    }).subscribe((data) => {
-      this.pageIndex = this.pageIndex;
-      this.pageSize = this.pageSize;
-      this.dataSource = new MatTableDataSource(data.content);
+    })
+    .subscribe((data) => {
+      this.pageIndex,
+      this.pageSize,
+      this.dataSource = new MatTableDataSource(data.content)
     })
   }
 

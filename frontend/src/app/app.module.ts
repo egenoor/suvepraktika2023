@@ -6,15 +6,18 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { AppRoutingModule } from './app-routing.module'
 import { AppComponent } from './app.component'
 import { BookDetailComponent } from './components/book-detail/book-detail.component'
-// import { BooksListComponent } from './components/books-list/books-list.component'
 import { BooksTableComponent } from './components/books-table/books-table.component'
+import { CheckoutComponent } from './components/checkout/checkout.component'
 import { MaterialModule } from './material/material.module'
+import { SidebarComponent } from './components/checkout/sidebar/sidebar.component'
 
 @NgModule({
   declarations: [
     AppComponent,
-    // BooksListComponent,
     BookDetailComponent,
+    CheckoutComponent,
+    BooksTableComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
@@ -22,7 +25,7 @@ import { MaterialModule } from './material/material.module'
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-    BooksTableComponent
+
   ],
   providers: [],
   bootstrap: [AppComponent]

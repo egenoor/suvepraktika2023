@@ -1,9 +1,9 @@
-import { Component, OnInit } from '@angular/core';
-import { BookService } from '../../services/book.service';
-import { Book } from '../../models/book';
-import { Observable } from 'rxjs';
-import { ActivatedRoute } from '@angular/router';
-import { map, switchMap } from 'rxjs/operators';
+import { Component, OnInit } from '@angular/core'
+import { ActivatedRoute } from '@angular/router'
+import { Observable } from 'rxjs'
+import { map, switchMap } from 'rxjs/operators'
+import { Book } from '../../models/book'
+import { BookService } from '../../services/book.service'
 
 @Component({
   selector: 'app-book-detail',
@@ -12,7 +12,7 @@ import { map, switchMap } from 'rxjs/operators';
 })
 export class BookDetailComponent implements OnInit {
   book$!: Observable<Book>;
-
+  bookDetails: Book;
 
   constructor(
     private route: ActivatedRoute,
@@ -21,9 +21,15 @@ export class BookDetailComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.book$ = this.route.params
+    this.route.params
       .pipe(map(params => params['id']))
       .pipe(switchMap(id => this.bookService.getBook(id)))
+      .subscribe(book => this.bookDetails = book);
   }
 
+  addToCheckout() {
+    const checkoutLS: Book[] = JSON.parse(localStorage.getItem("checkout") || "[]");
+    checkoutLS.push(this.bookDetails);
+    localStorage.setItem("checkout", JSON.stringify(checkoutLS));
+  }
 }
