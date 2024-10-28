@@ -9,6 +9,7 @@ import { RestUtil } from './rest-util'
 @Injectable({
   providedIn: 'root'
 })
+
 export class BookService {
 
   private readonly baseUrl = environment.backendUrl + '/api/book';
@@ -32,6 +33,11 @@ export class BookService {
 
   saveBook(book: Book): Observable<void> {
     const url = this.baseUrl + '/saveBook';
+    return this.http.post<void>(url, book);
+  }
+
+  updateBook(book: Book): Observable<void> {
+    const url = this.baseUrl + '/updateBook';
     return this.http.post<void>(url, book);
   }
 

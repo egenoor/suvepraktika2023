@@ -32,6 +32,11 @@ public class CheckOutService {
         checkOutRepository.save(ModelMapperFactory.getMapper().map(checkOutDTO, CheckOut.class));
     }
 
+    public void updateCheckOut(CheckOutDTO checkOutDTO) {
+        checkOutRepository.findById(checkOutDTO.getId()).orElseThrow();
+        checkOutRepository.save(ModelMapperFactory.getMapper().map(checkOutDTO, CheckOut.class));
+    }
+
     public void deleteCheckOut(UUID checkOutId) {
         checkOutRepository.deleteById(checkOutId);
     }

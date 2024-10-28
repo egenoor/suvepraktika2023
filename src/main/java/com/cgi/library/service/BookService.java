@@ -33,7 +33,14 @@ public class BookService {
         return bookRepository.save(modelMapper.map(bookDTO, Book.class)).getId();
     }
 
+    public UUID updateBook(BookDTO bookDTO) {
+        ModelMapper modelMapper = ModelMapperFactory.getMapper();
+        bookRepository.findById(bookDTO.getId()).orElseThrow();
+        return bookRepository.save(modelMapper.map(bookDTO, Book.class)).getId();
+    }
+
     public void deleteBook(UUID bookId) {
         bookRepository.deleteById(bookId);
     }
+
 }

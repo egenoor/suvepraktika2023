@@ -8,8 +8,8 @@ import { AppComponent } from './app.component'
 import { BookDetailComponent } from './components/book-detail/book-detail.component'
 import { BooksTableComponent } from './components/books-table/books-table.component'
 import { CheckoutComponent } from './components/checkout/checkout.component'
-import { MaterialModule } from './material/material.module'
 import { SidebarComponent } from './components/checkout/sidebar/sidebar.component'
+import { MaterialModule } from './material/material.module'
 
 @NgModule({
   declarations: [
@@ -25,7 +25,6 @@ import { SidebarComponent } from './components/checkout/sidebar/sidebar.componen
     AppRoutingModule,
     BrowserAnimationsModule,
     MaterialModule,
-
   ],
   providers: [],
   bootstrap: [AppComponent]
