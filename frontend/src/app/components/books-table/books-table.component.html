@@ -71,4 +71,8 @@
     aria-label="Select page"
   >
   </mat-paginator>
+  <button mat-raised-button (click)="addBook = true">Add new book</button>
+  <div *ngIf="addBook === true">
+    <app-book-form />
+  </div>
 </div>

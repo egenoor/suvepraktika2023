@@ -9,7 +9,10 @@ import { BookDetailComponent } from './components/book-detail/book-detail.compon
 import { BooksTableComponent } from './components/books-table/books-table.component'
 import { CheckoutComponent } from './components/checkout/checkout.component'
 import { SidebarComponent } from './components/checkout/sidebar/sidebar.component'
-import { MaterialModule } from './material/material.module'
+import { MaterialModule } from './material/material.module';
+import { CheckoutDetailComponent } from './components/checkout/checkout-detail/checkout-detail.component';
+import { CheckoutFormComponent } from './components/checkout/checkout-form/checkout-form.component';
+import { BookFormComponent } from './components/books-table/book-form/book-form.component'
 
 @NgModule({
   declarations: [
@@ -17,7 +20,10 @@ import { MaterialModule } from './material/material.module'
     BookDetailComponent,
     CheckoutComponent,
     BooksTableComponent,
-    SidebarComponent
+    SidebarComponent,
+    CheckoutDetailComponent,
+    CheckoutFormComponent,
+    BookFormComponent
   ],
   imports: [
     BrowserModule,

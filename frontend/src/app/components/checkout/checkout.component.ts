@@ -16,9 +16,9 @@ export class CheckoutComponent implements OnInit{
   checkouts$!: Observable<Page<Checkout>>;
   dataSource: MatTableDataSource<Checkout>;
   displayedColumns: string[] = [
+    'borrowedBook',
     'borrowerFirstName',
     'borrowerLastName',
-    'borrowedBook',
     'checkedOutDate',
     'dueDate',
     'returnedDate'

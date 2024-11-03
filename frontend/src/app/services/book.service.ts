@@ -25,6 +25,11 @@ export class BookService {
     return this.http.get<Page<Book>>(url, {params});
   }
 
+  getBookGenres(): Observable<string[]> {
+    const url = this.baseUrl + '/getBookGenres';
+    return this.http.get<string[]>(url);
+  }
+
   getBook(bookId: string): Observable<Book> {
     const url = this.baseUrl + '/getBook';
     const params = new HttpParams().set('bookId', bookId);

@@ -19,6 +19,7 @@ export class BooksTableComponent implements OnInit {
   length: number;
   pageIndex: number;
   pageSize: number;
+  addBook = false;
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
