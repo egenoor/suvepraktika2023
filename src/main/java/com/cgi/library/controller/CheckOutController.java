@@ -23,8 +23,8 @@ public class CheckOutController {
     }
 
     @GetMapping(value = "getCheckout")
-    public ResponseEntity<CheckOutDTO> getCheckOut(@RequestParam(value = "checkOutId") UUID checkOutId) {
-        return ResponseEntity.ok(checkOutService.getCheckOut(checkOutId));
+    public ResponseEntity<CheckOutDTO> getCheckOut(@RequestParam(value = "checkoutId") UUID checkoutId) {
+        return ResponseEntity.ok(checkOutService.getCheckOut(checkoutId));
     }
 
     @PostMapping(value = "saveCheckout")
@@ -40,8 +40,8 @@ public class CheckOutController {
     }
 
     @DeleteMapping(value = "deleteCheckout")
-    public ResponseEntity<String> deleteCheckOut(@RequestParam(value = "checkOutId") UUID checkOutId) {
-        checkOutService.deleteCheckOut(checkOutId);
+    public ResponseEntity<String> deleteCheckOut(@RequestParam(value = "checkoutId") UUID checkoutId) {
+        checkOutService.deleteCheckOut(checkoutId);
         return ResponseEntity.ok("");
     }
 }

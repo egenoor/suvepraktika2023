@@ -10,7 +10,7 @@ import { BookService } from '../../services/book.service'
 @Component({
   selector: 'app-books-table',
   templateUrl: './books-table.component.html',
-  styleUrls: ['./books-table.component.scss'],
+  styleUrls: ['./books-table.component.css'],
 })
 export class BooksTableComponent implements OnInit {
   books$!: Observable<Page<Book>>;

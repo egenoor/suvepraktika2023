@@ -1,0 +1,8 @@
+<h1 mat-dialog-title>{{ data.confirmationTitle }}</h1>
+<div mat-dialog-content>{{ data.confirmationMessage }}</div>
+<div>
+  <button mat-button mat-dialog-close (click)="closeModal()">No</button>
+  <button mat-button mat-dialog-close (click)="data.onConfirmation()">
+    Yes
+  </button>
+</div>

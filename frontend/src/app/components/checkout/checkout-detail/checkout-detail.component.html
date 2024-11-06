@@ -1,1 +1,21 @@
-<p>checkout-detail works!</p>
+<div class="checkout-detail-container">
+  <h1>{{ checkoutDetails.borrowedBook.title }}</h1>
+  <div>
+    <span class="book-label">Borrower: </span
+    >{{
+      checkoutDetails.borrowerFirstName + " " + checkoutDetails.borrowerLastName
+    }}
+  </div>
+  <div>
+    <span class="book-label">Checked out: </span
+    >{{ checkoutDetails.checkedOutDate | date }}
+  </div>
+  <div>
+    <span class="book-label">Due date: </span
+    >{{ checkoutDetails.dueDate | date }}
+  </div>
+  <br />
+  <button mat-raised-button color="Primary">Delete</button>
+  <br />
+  <button mat-raised-button color="Primary">Edit</button>
+</div>
