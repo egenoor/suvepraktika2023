@@ -10,7 +10,7 @@ import { Page } from '../../models/page'
 @Component({
   selector: 'app-checkout',
   templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.scss'],
+  styleUrls: ['./checkout.component.css'],
 })
 export class CheckoutComponent implements OnInit{
   checkouts$!: Observable<Page<Checkout>>;

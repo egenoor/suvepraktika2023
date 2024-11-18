@@ -1,0 +1,38 @@
+<div class="form-container">
+  <div class="title-container">
+    <h1>Add new book</h1>
+    <button mat-raised-button (click)="closeModal()">X</button>
+  </div>
+  <form ngForm #addNewBookForm="ngForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Title</mat-label>
+      <input matInput ngModel name="book-title"/>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Author</mat-label>
+      <input matInput ngModel name="author" />
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline" *ngIf="genres$ | async as genres" >
+      <mat-label>Select genre</mat-label>
+      <mat-select [(ngModel)]="selectedGenre" name="genre">
+        <mat-option [value]="genre" *ngFor="let genre of genres">{{
+          genre
+        }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>MM/DD/YYYY</mat-label>
+      <input matInput ngModel name="year" [matDatepicker]="picker" />
+      <mat-datepicker-toggle
+        matIconSuffix
+        [for]="picker"
+      ></mat-datepicker-toggle>
+      <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+  </form>
+  <button mat-flat-button color="primary" (click)="addBook(addNewBookForm)">Add</button>
+</div>
+

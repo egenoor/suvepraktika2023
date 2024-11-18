@@ -1,0 +1,14 @@
+.form-container {
+  padding: 30px;
+  min-width: 500px;
+
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  mat-form-field {
+    width: 100%;
+  }
+
+}

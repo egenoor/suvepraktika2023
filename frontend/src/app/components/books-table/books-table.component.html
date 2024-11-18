@@ -1,11 +1,10 @@
-<div class="container">
+<div>
   <table
     mat-table
     [dataSource]="dataSource"
     matSort
     matSortActive="title"
     (matSortChange)="sortBooks($event)"
-    class="mat-elevation-z8"
   >
     <ng-container matColumnDef="title">
       <th
@@ -67,9 +66,4 @@
     aria-label="Select page"
   >
   </mat-paginator>
-  <button mat-raised-button (click)="addBook = true">Add new book</button>
-  <div *ngIf="addBook === true">
-    <br /><br />
-    <app-book-form />
-  </div>
 </div>

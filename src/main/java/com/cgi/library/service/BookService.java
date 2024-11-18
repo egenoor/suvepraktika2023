@@ -31,6 +31,7 @@ public class BookService {
 
     public UUID saveBook(BookDTO bookDTO) {
         ModelMapper modelMapper = ModelMapperFactory.getMapper();
+        bookDTO.setId(UUID.randomUUID());
         return bookRepository.save(modelMapper.map(bookDTO, Book.class)).getId();
     }
 

@@ -4,6 +4,7 @@ import { Observable } from 'rxjs'
 import { environment } from 'src/environments/environment'
 import { Book } from '../models/book'
 import { Page, PageRequest } from '../models/page'
+import { AddBookBody } from '../types/interfaces/add-book-body'
 import { RestUtil } from './rest-util'
 
 @Injectable({
@@ -36,7 +37,7 @@ export class BookService {
     return this.http.get<Book>(url, {params});
   }
 
-  saveBook(book: Book): Observable<void> {
+  saveBook(book: AddBookBody): Observable<void> {
     const url = this.baseUrl + '/saveBook';
     return this.http.post<void>(url, book);
   }

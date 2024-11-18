@@ -10,7 +10,7 @@ import { ConfirmationModalComponent } from '../../common/confirmation-modal/conf
 @Component({
   selector: 'app-book-detail',
   templateUrl: './book-detail.component.html',
-  styleUrls: ['./book-detail.component.scss']
+  styleUrls: ['./book-detail.component.css']
 })
 export class BookDetailComponent implements OnInit {
   book$!: Observable<Book>;
@@ -22,7 +22,14 @@ export class BookDetailComponent implements OnInit {
     private bookService: BookService,
   ) {}
 
-  openDialog(): void {
+  ngOnInit(): void {
+    this.route.params
+      .pipe(map(params => params['id']))
+      .pipe(switchMap(id => this.bookService.getBook(id)))
+      .subscribe(book => this.bookDetails = book);
+  }
+
+  openDeleteDialog(): void {
     this.dialog.open(ConfirmationModalComponent, {
       data: {
         confirmationTitle: "Delete book",
@@ -30,13 +37,6 @@ export class BookDetailComponent implements OnInit {
         onConfirmation: this.deleteBook.bind(this)
       }
     });
-  }
-
-  ngOnInit(): void {
-    this.route.params
-      .pipe(map(params => params['id']))
-      .pipe(switchMap(id => this.bookService.getBook(id)))
-      .subscribe(book => this.bookDetails = book);
   }
 
   addToCheckout() {

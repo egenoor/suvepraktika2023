@@ -1,0 +1,8 @@
+.checkout-container {
+  padding: 40px;
+  
+  .title-container {
+    display: flex;
+    justify-content: space-between;
+  }
+}
