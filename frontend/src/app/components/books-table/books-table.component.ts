@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core'
+import { NgForm } from '@angular/forms'
 import { MatPaginator, PageEvent } from '@angular/material/paginator'
 import { MatSort, Sort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
@@ -15,18 +16,20 @@ import { BookService } from '../../services/book.service'
 export class BooksTableComponent implements OnInit {
   books$!: Observable<Page<Book>>;
   dataSource: MatTableDataSource<Book>;
-  displayedColumns: string[] = ['title', 'author', 'genre', 'year'];
+  books: Book[] = [];
+  displayedColumns: string[] = ['title', 'author', 'genre', 'year', 'status', 'checkoutcount'];
   length: number;
   pageIndex: number;
   pageSize: number;
+  searchField = "";
+  selectedStatus = "";
 
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   
   constructor(
     private bookService: BookService,
-  ) {
-  }
+  ) {}
 
   handlePageChange(e: PageEvent) {
     this.bookService
@@ -56,14 +59,29 @@ export class BooksTableComponent implements OnInit {
     })
   }
 
+  searchBooks(form: NgForm) {
+    this.dataSource = new MatTableDataSource(this.books.filter((book) => {
+      return book.title.includes(form.value.searchField)
+    }));
+  }
+
+  filterByStatus() {
+    this.dataSource = new MatTableDataSource(this.books.filter((book) => {
+      if (this.selectedStatus === "ALL") {
+        return true;
+      }
+      return book.status === this.selectedStatus;
+    }))
+  }
+
   ngOnInit(): void {
-    // TODO this observable should emit books taking into consideration pagination, sorting and filtering options.
     this.books$ = this.bookService.getBooks({});
     this.books$.subscribe((booksPage) => {
       this.pageIndex = booksPage.number;
       this.length = booksPage.totalElements;
       this.dataSource = new MatTableDataSource(booksPage.content);
       this.dataSource.paginator = this.paginator;
+      this.books = booksPage.content;
     })
   }
 

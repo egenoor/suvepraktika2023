@@ -12,7 +12,6 @@ import { AddBookBody } from 'src/app/types/interfaces/add-book-body'
   styleUrls: ['./add-book-modal.component.css']
 })
 export class AddBookModalComponent implements OnInit {
-  selectedGenre = "";
   genres$: Observable<string[]>;
 
   constructor(
@@ -33,7 +32,7 @@ export class AddBookModalComponent implements OnInit {
       year: form.value.year.getFullYear(),
       added: new Date()
     }
-    this.bookService.saveBook(addBookFormBody).subscribe()
+    this.bookService.saveBook(addBookFormBody).subscribe();
     this.closeModal();
   }
 

@@ -1,4 +1,19 @@
 <div>
+  <div class="filter-container">
+    <mat-form-field appearance="outline">
+      <mat-select name="status" [(ngModel)]="selectedStatus" (selectionChange)="filterByStatus()">
+        <mat-option value="ALL" selected>All</mat-option>
+        <mat-option value="BORROWED">Borrowed</mat-option>
+        <mat-option value="AVAILABLE">Available</mat-option>
+      </mat-select>
+    </mat-form-field>
+    <form ngForm #searchBook="ngForm">
+      <mat-form-field appearance="outline">
+        <input matInput ngModel name="searchField"/>
+      </mat-form-field>
+      <button mat-button (click)="searchBooks(searchBook)">Search</button>
+    </form>
+  </div>
   <table
     mat-table
     [dataSource]="dataSource"
@@ -53,6 +68,28 @@
         Year
       </th>
       <td mat-cell *matCellDef="let book">{{ book.year }}</td>
+    </ng-container>
+    <ng-container matColumnDef="status">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by status"
+      >
+        Status
+      </th>
+      <td mat-cell *matCellDef="let book">{{ book.status }}</td>
+    </ng-container>
+    <ng-container matColumnDef="checkoutcount">
+      <th
+        mat-header-cell
+        *matHeaderCellDef
+        mat-sort-header
+        sortActionDescription="Sort by checkoutcount"
+      >
+      Checkout count
+      </th>
+      <td mat-cell *matCellDef="let book">{{ book.checkOutCount }}</td>
     </ng-container>
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>

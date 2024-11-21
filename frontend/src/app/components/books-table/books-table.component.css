@@ -1,0 +1,6 @@
+.filter-container {
+  display: flex;
+  .mat-mdc-form-field {
+    margin-right: 20px;
+  }
+}

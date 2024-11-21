@@ -16,10 +16,10 @@
     <br />
     <mat-form-field appearance="outline" *ngIf="genres$ | async as genres" >
       <mat-label>Select genre</mat-label>
-      <mat-select [(ngModel)]="selectedGenre" name="genre">
-        <mat-option [value]="genre" *ngFor="let genre of genres">{{
-          genre
-        }}</mat-option>
+      <mat-select ngModel name="genre">
+        <mat-option [value]="genre" *ngFor="let genre of genres">
+          {{genre}}
+        </mat-option>
       </mat-select>
     </mat-form-field>
     <br />
