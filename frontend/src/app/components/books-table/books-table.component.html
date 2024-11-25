@@ -11,7 +11,7 @@
       <mat-form-field appearance="outline">
         <input matInput ngModel name="searchField"/>
       </mat-form-field>
-      <button mat-button (click)="searchBooks(searchBook)">Search</button>
+      <button mat-raised-button (click)="searchBooks(searchBook)" color="Primary">Search</button>
     </form>
   </div>
   <table
@@ -94,7 +94,6 @@
     <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
     <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
   </table>
-
   <mat-paginator
     [length]="length"
     [pageIndex]="pageIndex"

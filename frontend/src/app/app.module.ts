@@ -12,11 +12,13 @@ import { BooksTableComponent } from './components/books-table/books-table.compon
 import { CheckoutDetailComponent } from './components/checkout/checkout-detail/checkout-detail.component'
 import { CheckoutFormComponent } from './components/checkout/checkout-form/checkout-form.component'
 import { CheckoutComponent } from './components/checkout/checkout.component'
-import { SidebarComponent } from './components/checkout/sidebar/sidebar.component'
 import { ConfirmationModalComponent } from './components/common/confirmation-modal/confirmation-modal.component'
+import { LateCheckoutsTableComponent } from './components/late-checkouts-table/late-checkouts-table.component'
 import { MaterialModule } from './material/material.module'
-import { LibraryViewComponent } from './views/library-view/library-view.component';
 import { CheckoutViewComponent } from './views/checkout-view/checkout-view.component'
+import { LateCheckoutViewComponent } from './views/late-checkout-view/late-checkout-view.component'
+import { LibraryViewComponent } from './views/library-view/library-view.component';
+import { FavoritesComponent } from './components/favorites/favorites.component'
 
 @NgModule({
   declarations: [
@@ -24,13 +26,15 @@ import { CheckoutViewComponent } from './views/checkout-view/checkout-view.compo
     BookDetailComponent,
     CheckoutComponent,
     BooksTableComponent,
-    SidebarComponent,
     CheckoutDetailComponent,
     CheckoutFormComponent,
     ConfirmationModalComponent,
     LibraryViewComponent,
     AddBookModalComponent,
-    CheckoutViewComponent
+    CheckoutViewComponent,
+    LateCheckoutViewComponent,
+    LateCheckoutsTableComponent,
+    FavoritesComponent
   ],
   imports: [
     BrowserModule,

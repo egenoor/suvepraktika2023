@@ -2,26 +2,22 @@ import { Component, OnInit, ViewChild } from '@angular/core'
 import { MatPaginator, PageEvent } from '@angular/material/paginator'
 import { MatSort, Sort } from '@angular/material/sort'
 import { MatTableDataSource } from '@angular/material/table'
-import { Observable } from 'rxjs'
 import { Checkout } from 'src/app/models/checkout'
 import { CheckoutService } from 'src/app/services/checkout.service'
-import { Page } from '../../models/page'
 
 @Component({
-  selector: 'app-checkout',
-  templateUrl: './checkout.component.html',
-  styleUrls: ['./checkout.component.css'],
+  selector: 'app-late-checkouts-table',
+  templateUrl: './late-checkouts-table.component.html',
+  styleUrls: ['./late-checkouts-table.component.css']
 })
-export class CheckoutComponent implements OnInit{
-  checkouts$!: Observable<Page<Checkout>>;
+export class LateCheckoutsTableComponent implements OnInit {
   dataSource: MatTableDataSource<Checkout>;
   displayedColumns: string[] = [
     'borrowedBook',
     'borrowerFirstName',
     'borrowerLastName',
     'checkedOutDate',
-    'dueDate',
-    'returnedDate'
+    'dueDate'
   ];
   length: number;
   pageIndex: number;
@@ -62,13 +58,17 @@ export class CheckoutComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.checkouts$ = this.checkoutService.getCheckouts({});
-    this.checkouts$.subscribe((checkoutPage) => {
+    this.checkoutService.getCheckouts({
+      pageIndex: 0,
+      pageSize: 10000
+    }).subscribe((checkoutPage) => {
       this.pageIndex = checkoutPage.number;
       this.length = checkoutPage.totalElements;
-      this.dataSource = new MatTableDataSource(checkoutPage.content);
+      const filteredContent = checkoutPage.content.filter((checkout) => {
+        return new Date(checkout.dueDate).getTime() <= new Date().getTime();
+      });
+      this.dataSource = new MatTableDataSource(filteredContent);
       this.dataSource.paginator = this.paginator;
     })
   }
-
 }

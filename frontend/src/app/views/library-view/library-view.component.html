@@ -1,7 +1,11 @@
 <div class="library-container">
   <div class="title-container">
     <h1>Books</h1>
-    <button mat-raised-button (click)="openNewBookModal()">Add new book</button>
+    <div>
+      <button mat-raised-button (click)="openNewBookModal()">Add new book</button>
+      <button mat-raised-button (click)="checkoutBook = true">Checkout book</button>
+      <button mat-raised-button>Return book</button>
+    </div>
   </div>
-  <app-books-table />
+  <app-books-table [checkoutBook]="checkoutBook"/>
 </div>

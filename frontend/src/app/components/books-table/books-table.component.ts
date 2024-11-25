@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core'
+import { Component, Input, OnInit, ViewChild } from '@angular/core'
 import { NgForm } from '@angular/forms'
 import { MatPaginator, PageEvent } from '@angular/material/paginator'
 import { MatSort, Sort } from '@angular/material/sort'
@@ -24,6 +24,7 @@ export class BooksTableComponent implements OnInit {
   searchField = "";
   selectedStatus = "";
 
+  @Input() checkoutBook: boolean;
   @ViewChild(MatPaginator) paginator: MatPaginator;
   @ViewChild(MatSort) sort: MatSort;
   
@@ -53,8 +54,6 @@ export class BooksTableComponent implements OnInit {
       direction: sortEvent.direction
     })
     .subscribe((data) => {
-      this.pageIndex,
-      this.pageSize,
       this.dataSource = new MatTableDataSource(data.content)
     })
   }

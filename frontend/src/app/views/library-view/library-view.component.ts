@@ -8,11 +8,10 @@ import { AddBookModalComponent } from 'src/app/components/add-book-modal/add-boo
   styleUrls: ['./library-view.component.css']
 })
 export class LibraryViewComponent {
+  checkoutBook = false;
   constructor(public dialog: MatDialog,){}
 
   openNewBookModal() {
-    this.dialog.open(AddBookModalComponent, {
-
-    })
+    this.dialog.open(AddBookModalComponent, {});
   }
 }
