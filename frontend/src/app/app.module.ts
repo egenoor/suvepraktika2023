@@ -18,7 +18,10 @@ import { MaterialModule } from './material/material.module'
 import { CheckoutViewComponent } from './views/checkout-view/checkout-view.component'
 import { LateCheckoutViewComponent } from './views/late-checkout-view/late-checkout-view.component'
 import { LibraryViewComponent } from './views/library-view/library-view.component';
-import { FavoritesComponent } from './components/favorites/favorites.component'
+import { FavoritesComponent } from './components/favorites/favorites.component';
+import { SignupComponent } from './components/signup/signup.component';
+import { LoginComponent } from './components/login/login.component';
+import { ReturnBookModalComponent } from './components/return-book-modal/return-book-modal.component'
 
 @NgModule({
   declarations: [
@@ -34,7 +37,10 @@ import { FavoritesComponent } from './components/favorites/favorites.component'
     CheckoutViewComponent,
     LateCheckoutViewComponent,
     LateCheckoutsTableComponent,
-    FavoritesComponent
+    FavoritesComponent,
+    SignupComponent,
+    LoginComponent,
+    ReturnBookModalComponent
   ],
   imports: [
     BrowserModule,

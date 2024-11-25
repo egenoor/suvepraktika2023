@@ -1,0 +1,26 @@
+<div class="signup-container">
+  <h1>Signup</h1>
+  <form ngForm #signupForm="ngForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput ngModel name="username"/>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>First name</mat-label>
+      <input matInput ngModel name="first-name"/>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Last name</mat-label>
+      <input matInput ngModel name="last-name" />
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput ngModel name="password" />
+    </mat-form-field>
+    <br />
+  </form>
+  <button mat-flat-button color="primary" (click)="signup()">Signup</button>
+</div>

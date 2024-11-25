@@ -1,0 +1,16 @@
+<div class="login-container">
+  <h1>Login</h1>
+  <form ngForm #loginForm="ngForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Username</mat-label>
+      <input matInput ngModel name="username"/>
+    </mat-form-field>
+    <br />
+    <mat-form-field appearance="outline">
+      <mat-label>Password</mat-label>
+      <input matInput ngModel name="password" />
+    </mat-form-field>
+    <br />
+  </form>
+  <button mat-flat-button color="primary" (click)="login()">Login</button>
+</div>
