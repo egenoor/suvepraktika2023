@@ -2,9 +2,11 @@ package com.cgi.library.controller;
 
 import com.cgi.library.entity.Account;
 import com.cgi.library.model.AccountDTO;
+import com.cgi.library.model.Token;
 import com.cgi.library.repository.AccountRepository;
 import com.cgi.library.service.AuthService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
@@ -24,8 +26,9 @@ public class AuthController {
     private AccountRepository accountRepository;
 
     @PostMapping("signup")
-    public Account signup(@RequestBody Account account) {
-        return this.authService.saveAccount(account);
+    public ResponseEntity<Token> signup(@RequestBody Account account) {
+        Account savedAccount = this.authService.saveAccount(account);
+        return ResponseEntity.ok().body(authService.getToken(savedAccount));
     }
 
     @GetMapping("accounts")
